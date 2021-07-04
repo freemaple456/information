@@ -26,6 +26,7 @@ def index():
 def index2():
     return render_template("index.html")
 
+
 @app.route('/login', methods=['post'])
 def login():
     name = request.form.get("name")
@@ -44,12 +45,13 @@ def login():
             lists = cursor.fetchall()
             return render_template("manage.html", name=name, lists=lists)
         else:
-            msg = "密码错误！"
-            return render_template("index.html", msg=msg)
+            cursor.execute("select * from list")
+            lists = cursor.fetchall()
+            return render_template("student.html", name=name, lists=lists)
     else:
         msg = "您不是管理员！"
         return render_template("index.html", msg=msg)
-
+    
 
 @app.route('/insert', methods=['post'])
 def insert():
