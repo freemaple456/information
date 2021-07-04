@@ -12,17 +12,17 @@
 <body>
 
 
-<div class="index-top"><strong>{{ name }}，Welcome to Our World!</strong>&nbsp;<a
+<div class="index-top"><strong>{{ name }}，欢迎使用本查询系统～</strong>&nbsp;<a
         href="{{ url_for("index") }}">退出</a></div>
 
 <div class="box">
     <table width="90%" style="margin-left:30px ;margin-top: 20px;">
         <tr height="50px">
-            <td width="25px">ID</td>
-            <td width="40px">姓名</td>
-            <td width="40px">年龄</td>
-            <td width="60px">家乡</td>
-            <td width="80px">身份</td>
+            <td width="25px">姓名</td>
+            <td width="40px">学号</td>
+            <td width="40px">性别</td>
+            <td width="60px">宿舍</td>
+            <td width="80px">绩点</td>
             <td width="100px">编辑</td>
         </tr>
         {% for list in lists %}
@@ -57,16 +57,30 @@
                         </div>
                         <form action="{{ url_for("update") }}" method="post">
                             <div class="modal-body">
-                                <p>ID：<input type="text" name="id" value="{{ list[0] }}"></p>
-                                <p>姓名：<input type="text" name="name" value="{{ list[1] }}"></p>
-                                <p>年龄：<input type="text" name="age" value="{{ list[2] }}"></p>
-                                <p>家乡：<input type="text" name="home" value="{{ list[3] }}"></p>
-                                <p>身份：<select value="{{ list[4] }}" name="identity">
+                                <p>姓名：<input type="text" name="Name" value="{{ list[0] }}"></p>
+                                <p>学号：<input type="text" name="ID" value="{{ list[1] }}"></p>
+                                <p>性别：<select value="{{ list[2] }}" name="Sex">
 
-                                    <option value="Undergraduate" >Undergraduate</option>
-                                    <option value="Postgraduate" >Postgraduate</option>
-                                    <option value="Doctoral" >Doctoral</option>
+                                    <option value="male" >male</option>
+                                    <option value="female" >female</option>
                                 </select></p>
+                                 <p>宿舍：<select value="{{ list[3] }}" name="RoomID">
+
+                                    <option value="B612" >B612</option>
+                                    <option value="B613" >B613</option>
+                                    <option value="B614" >B614</option>
+                                    <option value="B615" >B615</option>
+                                    <option value="B616" >B616</option>
+                                    <option value="B617" >B617</option>
+                                    <option value="B619" >B619</option>
+                                    <option value="B622" >B622</option>
+                                    <option value="B623" >B623</option>
+                                    <option value="B627" >B627</option>
+                                    <option value="B628" >B628</option>
+                                    <option value="B629" >B629</option>
+                                    <option value="B630" >B630</option>
+                                </select></p>
+                                 <p>绩点：<input type="text" name="GPA" value="{{ list[4] }}"></p>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭
@@ -100,16 +114,30 @@
             </div>
             <form action="{{ url_for("insert") }}" method="post">
                 <div class="modal-body">
-                    <p>ID：<input type="text" name="id"></p>
-                    <p>姓名：<input type="text" name="name"></p>
-                    <p>年龄：<input type="text" name="age"></p>
-                    <p>家乡：<input type="text" name="home"></p>
-                    <p>身份：<select name="identity">
+                    <p>姓名：<input type="text" name="Name"></p>
+                    <p>学号：<input type="text" name="ID"></p>
+                    <p>性别：<input type="text" name="Sex"></p>
 
-                                     <option value="Undergraduate" >Undergraduate</option>
-                                    <option value="Postgraduate" >Postgraduate</option>
-                                    <option value="Doctoral" >Doctoral</option>
+                                     <option value="male" >male</option>
+                                    <option value="female" >female</option>
                                 </select></p>
+                    <p>宿舍：<input type="text" name="RoomID"></p>
+
+                                      <option value="B612" >B612</option>
+                                    <option value="B613" >B613</option>
+                                    <option value="B614" >B614</option>
+                                    <option value="B615" >B615</option>
+                                    <option value="B616" >B616</option>
+                                    <option value="B617" >B617</option>
+                                    <option value="B619" >B619</option>
+                                    <option value="B622" >B622</option>
+                                    <option value="B623" >B623</option>
+                                    <option value="B627" >B627</option>
+                                    <option value="B628" >B628</option>
+                                    <option value="B629" >B629</option>
+                                    <option value="B630" >B630</option>
+                                </select></p>
+                    <p>绩点：<input type="text" name="GPA"></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭
@@ -121,6 +149,5 @@
         </div><!-- /.modal-content -->
     </div><!-- /.modal -->
 </div>
-
 </body>
 </html>

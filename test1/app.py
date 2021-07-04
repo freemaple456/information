@@ -10,7 +10,7 @@ def get_cursor():
         'port': 3306,
         'user': 'root',
         'passwd': 'root',
-        'db': 'text1',
+        'db': 'ClassFive',
         'charset': 'utf8'
     }
     conn = pymysql.connect(**config)
@@ -53,38 +53,38 @@ def login():
 
 @app.route('/insert', methods=['post'])
 def insert():
-    id = request.form.get("id")
-    name = request.form.get("name")
-    age = request.form.get("age")
-    home = request.form.get("home")
-    identity = request.form.get("identity")
+    Name = request.form.get("Name")
+    ID = request.form.get("ID")
+    Sex = request.form.get("Sex")
+    RoomID = request.form.get("RoomID")
+    GPA = request.form.get("GPA")
 
-    value = (id, name, age, home, identity)
-    insert_sql = '''INSERT INTO list(id,name, age,home,identity) values (%s,%s,%s,%s,%s)'''
+    value = (Name, ID, Sex, RoomID, GPA)
+    insert_sql = '''INSERT INTO list(Name,ID, Sex,RoomID,GPA) values (%s,%s,%s,%s,%s)'''
     cursor = get_cursor()  # 打开数据库
     cursor.execute(insert_sql, value)  # 执行sql语句
     msg="添加成功！"
     return msg
 
 
-@app.route('/delete/<int:id>')
-def delete(id):
+@app.route('/delete/<int:Name>')
+def delete(Name):
     cursor = get_cursor()  # 打开数据库
-    cursor.execute("delete from list where id = %s", (id))  # 删除某一行值
+    cursor.execute("delete from list where Name = %s", (Name))  # 删除某一行值
     msg="删除成功！"
     return msg
 
 
 @app.route('/update',methods=['post'])
 def update():
-    id = request.form.get("id")
-    name = request.form.get("name")
-    age = request.form.get("age")
-    home = request.form.get("home")
-    identity = request.form.get("identity")
-    value = ( name, age, home, identity,id)
+    Name = request.form.get("Name")
+    ID = request.form.get("ID")
+    Sex = request.form.get("Sex")
+    RoomID = request.form.get("RoomID")
+    GPA = request.form.get("GPA")
+    value = ( ID, Sex, RoomID, GPA,Name)
     cursor = get_cursor()  # 打开数据库
-    cursor.execute("update list set name = %s,age = %s,home =%s,identity = %s  where id = %s", value)  # 删除某一行值
+    cursor.execute("update list set ID = %s,Sex = %s,RoomID =%s,GPA = %s  where Name = %s", value)  # 删除某一行值
     msg="编辑成功！"
     return msg
 
